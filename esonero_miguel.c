@@ -15,7 +15,7 @@ time_t t;
 int main(void)
 {
 printf("testo di max 128 caratteri:");
-fgets(plaintextM, 128, stdin); // 129 invice di 128 perchè quando si vuole sapere quante caratteri sono mi da uno in più
+fgets(plaintextM, 128, stdin);
 printf("il tuo testo è %s\n", plaintextM);
 
 printf("il tuo testo è lungo%lu\n", strlen(plaintextM) - 1); // ho aggiunto -1 perché sempre mi viene un carattere di più
@@ -37,10 +37,10 @@ switch(scelta)
   inseriscitextK: printf("Devi inserire la stringa della chiaveK con quantità uguale o superiore a quella di plaintextM, ma inferiore di 128 caratteri.\n");
   fgets(chiaveK, 128, stdin);
 
-  if(strlen(chiaveK) >= strlen(plaintextM))
+  if(strlen(chiaveK) <= strlen(plaintextM))
   {
-    printf("Deve superare i caratteri di plaintextM, riprova rieseguendo il programma\n"); goto inseriscitextK;
-  }
+    printf("Deve superare i caratteri di plaintextM, riprova rieseguendo il programma\n"); goto inseriscitextK;// ho inserito il commando goto perché non mi viene in mente qualche altro modo per farlo tornare indietro
+}
   else
   {
     printf("La tua stringa chiave è %s\n", chiaveK);
@@ -82,6 +82,6 @@ case 2:
   }
   printf("la stringa di M è %s\n", cifr_M);
   break;
-default:;
+default:; // uno dei due casi o niente e finisce
 }
 }
